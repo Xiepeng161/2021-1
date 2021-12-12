@@ -5,6 +5,41 @@
     <title>Title</title>
 </head>
 <body>
-                                            看到啥了？傻der~~~~~~
+<canvas width="400" height="400"></canvas>
+<script>
+            var canvas = document.querySelector('canvas');
+            var context =  canvas.getContext('2d');
+            context.lineWidth = 3;
+            context.translate(200,200);
+            var t=0;
+            var maxt = 2*Math.PI;
+            var vt = 0.01;
+            var maxi = Math.ceil(maxt/vt);
+            var pointArr=[];
+            var x=0;
+            var y=0;
+            for(var i=0;i<=maxi;i++){
+                x=30*(2*Math.sin(t)+Math.sin(2*t));
+                y=30*(2*Math.cos(t)+Math.cos(2*t));
+                t+=vt;
+                pointArr.push([x,y]);
+            }
+            context.moveTo(pointArr[0][0],pointArr[0][1]);
+            draw();
+            function draw(){
+                context.fillStyle='#c00';
+                for(var i=1;i<pointArr.length;i++){
+                    x= pointArr[i][0];
+                    y= pointArr[i][1];
+                    context.lineTo(x,y);
+
+                }
+                context.fill();
+            }
+
+
+        </script>
+
+
 </body>
 </html>
